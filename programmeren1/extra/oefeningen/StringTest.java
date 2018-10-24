@@ -17,7 +17,7 @@ public class StringTest {
 
 	// positie van de tweede letter 'letter'
 	int count = 0;
-	for(char c : s.toCharArray()) {
+	for (char c : s.toCharArray()) {
 	    if (c == letter) // char is a primitive so can use '=='
 		count++;
 	    if (count == 2)
