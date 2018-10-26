@@ -1,5 +1,5 @@
 /*
-Oefening 10
+Oefening 11
 versie 2
 */
 import java.util.Scanner;
