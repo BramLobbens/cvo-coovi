@@ -1,4 +1,5 @@
 /*
+Week 4 - extra oefeningen
 Oefening 2
 */
 /* java.lang.Math not necessary

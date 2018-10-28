@@ -1,6 +1,6 @@
 /*
-Oefening 9
-versie 3
+Week 4 - extra oefeningen
+Oefening 9 - versie 3
 */
 public class IsolerenBoodschap3 {
 

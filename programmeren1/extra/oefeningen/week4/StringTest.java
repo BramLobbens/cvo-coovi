@@ -1,4 +1,5 @@
 /*
+Week 4 - extra oefeningen
 Oefening 6
 */
 import java.util.Scanner;

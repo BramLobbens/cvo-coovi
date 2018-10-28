@@ -1,6 +1,6 @@
 /*
-Oefening 11
-versie 1
+Week 4 - extra oefeningen
+Oefening 11 - versie 1
 */
 import java.util.Scanner;
 import java.util.stream.DoubleStream;

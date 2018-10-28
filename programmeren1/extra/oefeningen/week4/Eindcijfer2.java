@@ -1,6 +1,6 @@
 /*
-Oefening 11
-versie 2
+Week 4 - extra oefeningen
+Oefening 11 - versie 2
 */
 import java.util.Scanner;
 import java.util.List;
