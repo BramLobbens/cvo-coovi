@@ -15,15 +15,16 @@ public class BijhoudenSaldo {
         int saldo = 0; // beginsaldo
 
         System.out.println("Beheer banksaldo");
-        
-        do {
+
+        while (saldo >= 0 && saldo < MAX) {
+            
             System.out.println("Voer operatie in: ");
             int bedrag = Integer.parseInt(input.readLine());
             saldo += bedrag;
             System.out.println("Nieuw saldo: " + saldo);
-        }
-        while (saldo > 0 && saldo < MAX);
         
+        }
+                
         System.out.printf("%s. Rekening afgesloten.\n",
                           saldo < 0 ? "Saldo negatief" : "Limiet bereikt");
         
