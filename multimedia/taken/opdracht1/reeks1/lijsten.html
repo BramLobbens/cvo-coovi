@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="nl-BE">
+  <head>
+    <meta charset="utf-8" />
+    <title>lijsten</title>
+    <style>
+      body {
+	  margin-left: 40px;
+	  font-family: sans-serif;
+	  font-size: 16px;
+      }
+      h1 {
+	  text-decoration: underline;
+	  padding-bottom: 50px;
+      }
+      .ordered-list, .unordered-list {
+	  padding-right: 15%;
+      }
+      .ordered-list {
+	  float: left;
+      }
+      .unordered-list {
+	  display: inline-block;
+      }
+      ul > ol {
+	  list-style-type: lower-alpha;
+      }
+      li {
+	  margin-left: -20px;
+	  line-height: 1.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Verschillende Lijsten</h1>
+    <div class="ordered-list">
+      <h2>Geordend:</h2>
+      <ol>
+	<li>nummer 1</li>
+	<li>nummer 2</li>
+	<li>nummer 3</li>
+	<ul>
+	  <li>subelement</li>
+	  <li>subelement</li>
+	  <li>subelement</li>
+	</ul>
+	<li>nummer 4</li>
+      </ol>
+    </div>
+    <div class="unordered-list">
+      <h2>Ongeordend:</h2>
+      <ul>
+	<li>ongeordend element</li>
+	<li>ongeordend element</li>
+	<li>ongeordend element</li>
+	<li>ongeordend element</li>
+	<ol>
+	  <li>geordend subelement a</li>
+	  <li>geordend subelement b</li>
+	</ol>
+      </ul>
+    </div>
+  </body>
+</html>
