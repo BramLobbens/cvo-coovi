@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tabellen 2</title>
+    <style>
+      body {
+	  font-family: sans-serif;
+      }
+      table {
+	  width: 100%;
+	  border-collapse: collapse;
+      }
+      th {
+	  height: 50px;
+	  text-align: left;
+	  vertical-align: bottom;
+	  background-color: lightgray;
+      }
+      table, td, th {
+	  border: 1px solid black;
+      }
+      tfoot {
+	  height: 50px;
+	  font-weight: bold;
+	  vertical-align: bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tabellen 2</h1>
+    <table>
+      <caption>Stephen King Books</caption>
+      <thead>
+	<tr>
+	  <th>Title</th>
+	  <th>Language</th>
+	  <th colspan="2">ISBN</th>
+	  <th>Pages</th>
+	</tr>
+	<tr>
+	  <th></th>
+	  <th></th>
+	  <th>ISBN-10</th>
+	  <th>ISBN-13</th>
+	  <th></th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr>
+	  <td>Elevation</td>
+	  <td>English</td>
+	  <td>1982102314</td>
+	  <td>978-1982102319</td>
+	  <td>160</td>
+	</tr>
+	<tr>
+	  <td>The Outsider</td>
+	  <td>English</td>
+	  <td>9781473676350</td>
+	  <td>978-1473676350</td>
+	  <td>496</td>
+	</tr>
+	<tr>
+	  <td>Pet Sematary</td>
+	  <td>English</td>
+	  <td>1444708139</td>
+	  <td>978-1444708134</td>
+	  <td>480</td>
+	</tr>
+	<tr>
+	  <td>The Stand - Das letzte Gefecht: Roman</td>
+	  <td>Deutsch</td>
+	  <td>9783453438187</td>
+	  <td>978-3453438187</td>
+	  <td>1712</td>
+	</tr>
+      </tbody>
+      <tfoot>
+	<tr>
+	  <td colspan="4">total pages</td>
+	  <td>2848</td>
+	</tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
