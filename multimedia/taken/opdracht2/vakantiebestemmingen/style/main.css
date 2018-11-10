@@ -1,0 +1,64 @@
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    width: 1000px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+h1, h2 {
+    font-family: serif;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+nav {
+    text-align: center;
+    width: 100%;
+}
+
+nav ul li{
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+p , a {
+    color: #000000;
+    line-height: 1.8em;
+}
+
+a:hover {
+    color: red;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding-top: 20px;
+}
+
+main > div {
+    padding-top: 20px;
+}
+
+.intro img {
+    float: right;
+}
+
+div > table {
+    width: 100%;
+    align: center;
+}
+
+td {
+    text-align: center;
+}
