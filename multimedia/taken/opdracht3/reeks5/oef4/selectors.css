@@ -1,0 +1,27 @@
+body {
+    font-size: 16px;
+    margin: 60px 10% 0 10%;
+}
+
+h1 {
+    margin-bottom: 60px;
+    color: #ff3300;
+}
+
+#introduction p {
+    font-weight: bold;
+}
+
+#main p {
+    color: #ff3300;
+}
+
+.content p {
+    line-height: 1.5em;
+}
+
+/* maak eerste letter in de eerste zin een hoofdletter */
+.first-sentence {display: inline-block }
+.first-sentence:first-letter {
+    text-transform: capitalize;
+}

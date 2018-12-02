@@ -1,0 +1,32 @@
+body {
+    margin: 0 10% 0 10%;
+}
+
+#header {
+    text-align: center;
+}
+
+#main-left {
+    float: left;
+    width: 500px;
+    padding: 10px 10px 10px 10px;
+}
+
+#main-left:hover {
+    font-weight: bold;
+}
+
+#main-left p {
+    color: #ff5533;
+}
+
+#main-right {
+    float: right;
+    width: 500px;
+    padding: 10px 10px 10px 10px
+}
+
+#main-right:hover {
+    background-color: #33ff00;
+    color: #ffffff;
+}
