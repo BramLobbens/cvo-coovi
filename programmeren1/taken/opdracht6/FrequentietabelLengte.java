@@ -7,7 +7,6 @@ import java.util.HashMap;
  * Oefening 2
  */
 public class FrequentietabelLengte {
-
     
     public static void main(String[] args) {
 
