@@ -1,5 +1,0 @@
-Lucas,8.0
-Louis,9.5
-Noah,7.5
-Nathan,6
-Arthur,10
