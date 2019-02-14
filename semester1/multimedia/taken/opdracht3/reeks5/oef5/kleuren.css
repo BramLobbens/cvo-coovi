@@ -1,0 +1,25 @@
+body {
+    margin: 0 10% 0 10%;
+}
+
+#header {
+    background-color: #4455ff;
+    text-align: center;
+}
+
+#main-left {
+    float: left;
+    width: 300px;
+    background-color: #009944;
+    padding: 10px 10px 10px 10px;
+}
+
+#main-left p {
+    color: #ffffff;
+}
+
+#main-right {
+    float: right;
+    width: 700px;
+    padding: 10px 10px 10px 10px
+}

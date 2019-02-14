@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8"/>
+    <title>formulier 1</title>
+    <style>
+      form {
+          width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" method="">
+      <fieldset>
+        <legend>Persoonlijke gegevens</legend>
+        <ul>
+          <li>
+            <label for="name">Naam: </label>
+            <input type="text" id="name" name="user_name">
+          </li>
+          <li>
+            <label for="address">Adres: </label>
+            <input type="text" id="address" name="user_address">
+          </li>
+          <li>
+            <label for="postal-code">Postcode: </label>
+            <input type="text" id="postal-code" name="user_postal_code">
+          </li>
+          <li>
+            <label for="city">Woonplaats: </label>
+            <input type="text" id="city" name="user_city">
+          </li>
+          <li>
+            <label for="mail">E-mail: </label>
+            <input type="e-mail" id="mail" name="user_mail">
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+    <form action="" method="">
+      <fieldset>
+        <legend>Aanvullende informatie</legend><br/>
+        <textarea id="msg" name="user_message"></textarea>
+      </fieldset>
+    </form>
+    <button type="submit">Verzenden</button>
+  </body>
+</html>
