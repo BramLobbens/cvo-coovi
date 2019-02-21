@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>taak2</title>
+  </head>
+  <body>
+
+    <div>
+      <img id="cat" src="ogenopen.jpg"/>
+    </div>
+    <input type="submit" name="toe" value="ogen toe" onclick="ogenToe()">
+    <input type="submit" name="open" value="ogen ogen" onclick="ogenOpen()">
+
+    <script>
+      function ogenToe() {
+          document.getElementById("cat").src = "ogentoe.jpg";
+      };
+      function ogenOpen() {
+          document.getElementById("cat").src = "ogenopen.jpg";
+      };
+    </script>
+  </body>
+</html>
