@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>les 2</title>
+  </head>
+  <body>
+    <h2>deel 1</h2>
+    <div id="area"></div>
+    <div id="prijs"></div>
+
+    <h2>deel 2</h2>
+    <div id="array"></div>
+    <div>
+      <p>Middelste fruit is:
+      <span id="middelste"></span></p>
+    </div>
+
+    <!-- script deel 1 -->
+    <script>
+      var muur = {
+          lengte: 10,
+          breedte: 3,
+          area: function() {
+              return this.lengte * this.breedte;
+          },
+          berekenPrijs: function(prijs) {
+              return this.area() * prijs;
+          }
+      };
+      // bereken oppervlakte
+      console.log(muur.area());
+      document.getElementById("area").innerHTML = muur.area();
+
+      // bereken totale prijs
+      console.log(muur.berekenPrijs(5));
+      document.getElementById("prijs").innerHTML = muur.berekenPrijs(5);
+    </script>
+
+    <!-- script deel 2 -->
+    <script>
+      var fruit = ['apple', 'kiwi', 'pear', 'banana', 'mango'];
+
+      var makeList = function(list, array) {
+          // maak list leeg
+          list.innerHTML = "";
+          // voeg <li> nodes met fruit toe
+          for (var i = 0; i < array.length; i++) {
+              var node = document.createElement('li');
+              var text = document.createTextNode(array[i]);
+              node.appendChild(text);
+              list.appendChild(node);
+          };
+      };
+      
+      // voeg <ol id="list"> toe aan <div id="array">
+      var el = document.getElementById("array");
+      var ol = document.createElement('ol');
+      ol.id = "list";
+      el.appendChild(ol);
+
+      // 1) print lijst van fruit
+      var list = document.getElementById("list");
+      makeList(list, fruit);
+      
+      // 2) print middelste fruit
+      var mid = fruit[(fruit.length-1)/2];
+      document.getElementById('middelste').innerHTML = mid;;
+      
+      // 3) voeg een <li> node met aardbei toe
+      fruit.push("aardbei");
+      makeList(list, fruit);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <script>
+     say()
+     var a = 1;
+     var b = "2";
+     var c = a * b;
+     console.log(c);
+     console.log(typeof(c));
+     say();
+     var a = 3;
+     function say() {   <!-- functions get hoisted -->
+         document.write("hallo " + a + "</br>");
+     };
+
+     var myObj = {
+         name: "foo",
+         getName: function() {
+             return this.name;
+         }
+     };
+     console.log(myObj.getName());
+     console.log(myObj['name']);
+     console.log(myObj.name);
+    </script>
+  </body>
+</html>
