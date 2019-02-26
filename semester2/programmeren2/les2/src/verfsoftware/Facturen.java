@@ -1,4 +1,4 @@
-package Verfsoftware;
+package verfsoftware;
 
 public class Facturen {
 
