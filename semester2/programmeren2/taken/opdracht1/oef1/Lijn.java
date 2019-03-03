@@ -5,15 +5,24 @@ package oef1;
  * Oefening 1
  */
 public class Lijn {
-    
+
+    // lijndikte
     private int dikte;
+
+    // coordinaten beginpunt
     private int beginX;
     private int beginY;
+
+    // coordinaten eindpunt
     private int eindX;
     private int eindY;
     
-    public Lijn(int beginX, int beginY, int eindX, int eindY) {
-        this.dikte = 1;
+    public Lijn() {
+        this(1, 0, 0, 1024, 1024);
+    }
+
+    public Lijn(int dikte, int beginX, int beginY, int eindX, int eindY) {
+        this.dikte = dikte;
         this.beginX = beginX;
         this.beginY = beginY;
         this.eindX = eindX;
