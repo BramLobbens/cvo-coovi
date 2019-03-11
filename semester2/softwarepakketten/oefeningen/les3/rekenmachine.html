@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>rekenmachine</title>
+    
+  </head>
+  <body>
+    <h1>Les 3 - rekenmachine</h1>
+    <form>
+      <p>Input:</p>
+      <input type="text" id="num1">
+      <input type="text" id="num2">
+      <select id="operator">
+        <option value="">--Kies je bewerking--</option>
+        <option value="plus">+</option>
+        <option value="min">-</option>
+        <option value="div">/</option>
+        <option value="mult">*</option>
+      </select>
+      <button type="button" id="berekening" Onclick="calculate()">Bereken</button>
+    </form>
+    <p>Output:</p>
+    <div id="output"></div>
+
+    <script src="rekenmachine.js"></script>
+  </body>
+</html>
