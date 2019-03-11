@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>verbruik auto</title>
+    
+  </head>
+  <body>
+    <h1>Les 3 - verbruik auto</h1>
+    <form>
+      
+      Tank inhoud: <input type="text" id="tankInhoud"><br/>
+      Aantal Km: <input type="text" id="km"><br/>
+      
+      <button type="button" onclick="berekenVerbruik()">Bereken verbruik</button>
+    </form>
+    <p>Vebruik:</p>
+    Uw auto heeft een verbruik van <span id="output"></span> l/100 km.
+
+    <script>
+      function berekenVerbruik() {
+          var inhoud = parseInt(document.getElementById("tankInhoud").value);
+          var afstand = parseInt(document.getElementById("km").value);
+          console.log(inhoud);
+          console.log(afstand);
+
+          var verbruik = inhoud / afstand * 100
+          verbruik = verbruik.toFixed(2); // or Math.round(verbruik * 100) / 100;
+          
+          console.log(verbruik);
+          document.getElementById("output").innerHTML = verbruik;
+      };
+    </script>
+  </body>
+</html>
