@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>hotel</title>
+  </head>
+  <body>
+    <h1>Les 3 - hotel</h1>
+
+    <button type="button" id="hotel">Toon hotel</button>
+    
+    <p>Naam: <span id="naam"></span></p>
+    <p>Aantal kamers: <span id="kamers"></span></p>
+    <p>Vrije kamers: <span id="vrijeKamers"></span></p>
+    <p>Gym: <span id="gym"></span></p>
+    
+    <script>
+      
+      // (1) class
+      class Hotel {
+          constructor(naam, kamers, vrijeKamers, gym) {
+              this.naam = naam;
+              this.kamers = kamers;
+              this.vrijeKamers = vrijeKamers;
+              this.gym = gym;
+          }
+      };
+
+      // (2) function constructor
+      function hotel(naam, kamers, vrijeKamers, gym) {
+          this.naam = naam;
+          this.kamers = kamers;
+          this.vrijeKamers = vrijeKamers;
+          this.gym = gym;
+      };
+
+      // (1)
+      let hotelF1 = new Hotel("Hotel F1", 60, 10, false); // class
+      // (2)
+      let hotelF2 = new hotel("Hotel F2", 60, 10, false); // function
+      let hotelMercure = new hotel("Hotel Mercure", 120, 35, true); // function
+      
+      var displayHotel = function(hotel) {
+          document.getElementById("naam").innerHTML = hotel.naam;
+          document.getElementById("kamers").innerHTML = hotel.kamers;
+          document.getElementById("vrijeKamers").innerHTML = hotel.vrijeKamers;
+          var gym = hotel.gym ? "ja" : "neen";
+          document.getElementById("gym").innerHTML = gym;
+      };
+      
+      document.getElementById("hotel").addEventListener("click", () => {
+          displayHotel(hotelMercure);
+      }, false);
+
+       </script>
+  </body>
+</html>
