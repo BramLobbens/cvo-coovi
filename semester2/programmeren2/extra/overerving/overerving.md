@@ -17,7 +17,7 @@ _antwoord:_
 
 ## Vraag 4
 _antwoord:_
-```
+```java
 class Bankrekening extends Rekening {
     void stort(double bedrag) {
         // do something
@@ -30,7 +30,7 @@ class Bankrekening extends Rekening {
 
 ## Vraag 5
 _antwoord:_
-```
+```java
 final void keerIntrestUit() {
     saldo += voorlopigeIntrest;
     voorlopigeIntrest = saldo * rentevoet;
@@ -39,7 +39,7 @@ final void keerIntrestUit() {
 
 ## Vraag 6
 _antwoord:_
-```
+```java
 class PuntMassa implements Tekenbaar, Zwaar {
     public void teken(Uitvoerapparaat ua) {
         // do something
