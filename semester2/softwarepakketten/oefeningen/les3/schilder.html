@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>schilder</title>
+  </head>
+  <body>
+    <h1>Les 3 - schilder</h1>
+
+    <form>
+      Aantal: <input type="text" id="aantal">
+      <div id="opps"></div>
+    </form>
+    <button type="button" id="calculate">Calculate</button>
+    <script>
+
+      var val = document.getElementById("aantal").value;
+
+      for (var i = 0; i < val; i++) {
+          // create text input in id="opps"
+      };
+      
+      function schilder(naam, vraagprijs) {
+          this.naam = naam;
+          this.vraagprijs = vraagprijs; // per vierkante meter
+      };
+      
+      let senior = new schilder("Frank", 10);
+      let junior = new schilder("Bob", 5);
+      
+      
+      document.getElementById("calculate").addEventListener("click", () => {
+          // function here
+      }, false);
+
+       </script>
+  </body>
+</html>
