@@ -1,0 +1,50 @@
+Opdracht 3 - Databanken
+Bram Lobbens
+
+Stap 1: omzetting reguliere entiteittypes
+(1.0) Klant(klantnr, adres, naam)
+      PK: {klantnr}
+(2.0) Bestelling(datum, bestelnr, prijs)
+      PK: {bestelnr}
+(3.0) Artikel(artikelnr, prijs)
+      PK: {artikelnr}
+(4.0) Ensemble(naam, beschrijving)
+      PK: {naam}
+(5.0) Meubel(aard, fabrikant, houtsoort)
+
+Stap 2: omzetting zwakke entiteittypes
+NVT
+
+Stap 3: omzetting sub/supertypes
+(4.1) Ensemble(naam, beschrijving, artikelnr_ensemble, prijs)
+      PK: {artikelnr_ensemble, naam}
+(5.1) Meubel(aard, fabrikant, houtsoort, artikelnr_meubel, prijs)
+      PK: {artikelnr_meubel}
+
+Stap 4: omzetting categorieën
+NVT
+
+Stap 5: omzetting 1:1 relatietypes
+NVT
+
+Stap 6: omzetting 1:N relatietypes
+(2.1) Bestelling(datum, bestelnr, prijs, klantnr)
+      PK: {bestelnr}
+      FK: {klantnr}
+
+Stap 7: omzetting N:M relatietypes
+(6.0) Bestellen(aantal, bestelnr, artikelnr_ensemble, artikelnr_meubel, prijs)
+      PK: {bestelnr, artikelnr}
+      FK: {bestelnr} verwijst naar Bestelling
+      FK: {artikelnr_ensemble, prijs} verwijst naar Ensemble
+      FK: {artikelnr_meubel, prijs} verwijst naar Meubel
+(7.0) VormEnsemble(aantal, naam, artikelnr_ensemble, artikelnr_meubel)
+      PK: {naam, artikelnr_ensemble, artikelnr_meubel}
+      FK: {naam, artikelnr_ensemble} verwijst naar Ensemble
+      FK: {artikelnr_meubel} verwijst naar Meubel
+
+Stap 8: omzetting meerwaardige attributen
+NVT
+
+Stap 9: omzetting n‐aire relatietypes (n>2)
+NVT
