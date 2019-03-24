@@ -1,11 +1,13 @@
 Opdracht 3 - Databanken
 Bram Lobbens
 
+#1. Omzettingsstappen
+
 Stap 1: omzetting reguliere entiteittypes
 (1.0) Klant(klantnr, adres, naam)
       PK: {klantnr}
-(2.0) Bestelling(datum, bestelnr, prijs)
-      PK: {bestelnr}
+(2.0) Bestelling(datum, bestelnr)
+      PK: {bestelnr}    // maak bestelnr primary key
 (3.0) Artikel(artikelnr, prijs)
       PK: {artikelnr}
 (4.0) Ensemble(naam, beschrijving)
@@ -28,16 +30,16 @@ Stap 5: omzetting 1:1 relatietypes
 NVT
 
 Stap 6: omzetting 1:N relatietypes
-(2.1) Bestelling(datum, bestelnr, prijs, klantnr)
+(2.1) Bestelling(datum, bestelnr, klantnr)
       PK: {bestelnr}
       FK: {klantnr}
 
 Stap 7: omzetting N:M relatietypes
-(6.0) Bestellen(aantal, bestelnr, artikelnr_ensemble, artikelnr_meubel, prijs)
-      PK: {bestelnr, artikelnr}
+(6.0) Bestellen(aantal, bestelnr, artikelnr_ensemble, artikelnr_meubel)
+      PK: {bestelnr, artikelnr_ensemble, artikelnr_meubel}
       FK: {bestelnr} verwijst naar Bestelling
-      FK: {artikelnr_ensemble, prijs} verwijst naar Ensemble
-      FK: {artikelnr_meubel, prijs} verwijst naar Meubel
+      FK: {artikelnr_ensemble} verwijst naar Ensemble
+      FK: {artikelnr_meubel} verwijst naar Meubel
 (7.0) VormEnsemble(aantal, naam, artikelnr_ensemble, artikelnr_meubel)
       PK: {naam, artikelnr_ensemble, artikelnr_meubel}
       FK: {naam, artikelnr_ensemble} verwijst naar Ensemble
@@ -48,3 +50,30 @@ NVT
 
 Stap 9: omzetting n‐aire relatietypes (n>2)
 NVT
+
+
+#2. Resulterend databaseschema
+
+Klant(klantnr:int, adres:varchar, naam:varchar)
+      PK: {klantnr}
+
+Bestelling(datum:date, bestelnr:int, klantnr:int)
+      PK: {bestelnr}
+      FK: {klantnr}
+
+Ensemble(naam:varchar, beschrijving:varchar, artikelnr_ensemble:int, prijs:real)
+      PK: {artikelnr_ensemble, naam}
+
+Meubel(aard:varchar, fabrikant:varchar, houtsoort:varchar, artikelnr_meubel:int, prijs:real)
+      PK: {artikelnr_meubel}
+
+Bestellen(aantal:int, bestelnr:int, artikelnr_ensemble:int, artikelnr_meubel:int)
+      PK: {bestelnr, artikelnr_ensemble, artikelnr_meubel}
+      FK: {bestelnr} verwijst naar Bestelling
+      FK: {artikelnr_ensemble} verwijst naar Ensemble
+      FK: {artikelnr_meubel} verwijst naar Meubel
+      
+VormEnsemble(aantal:int, naam:varchar, artikelnr_ensemble:int, artikelnr_meubel:int)
+      PK: {naam, artikelnr_ensemble, artikelnr_meubel}
+      FK: {naam, artikelnr_ensemble} verwijst naar Ensemble
+      FK: {artikelnr_meubel} verwijst naar Meubel
