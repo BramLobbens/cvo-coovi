@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>eersterij sortable</title>
+    <style>
+      #eersterij { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+      #eersterij li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+      #eersterij li span { position: absolute; margin-left: -1.3em; }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $( function() {
+          $( "#eersterij" ).sortable();
+          $( "#eersterij" ).disableSelection();
+      } );
+    </script>
+  </head>
+  <body>
+
+    <ul id="eersterij">
+      <li>Steve</li>
+      <li>Bram</li>
+      <li>Michael</li>
+      <li>Bjorn</li>
+      <li>Geert</li>
+    </ul>
+    
+  </body>
+</html>

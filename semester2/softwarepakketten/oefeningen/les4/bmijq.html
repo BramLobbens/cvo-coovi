@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <title>BMI berekening</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <form>
+      Geef je gewicht in (kg): <input type="number" id="gewicht"></br>
+      Geef je lengte in (cm):  <input type="number" id="lengte"></br>
+
+      <button type="button" onclick="calcBMI()">Bereken je BMI</button>
+    </form>
+
+    <p id="jouwBMI"></p>
+
+    <script>
+      function calcBMI() {
+          const weight = $("#gewicht").val();
+          const length = $("#lengte").val() / 100;
+          const bmi = weight / (length * length)
+
+          var diagnose;
+          if (bmi >= 30) {
+              diagnose = "overgewicht";
+          }
+          else if(bmi < 20) {
+              diagnose = "ondergwicht";
+          }
+          else {
+              diagnose = "standaard";
+          }
+          
+          $("#jouwBMI").html(Math.round(bmi * 100) / 100 + " -> " + diagnose);
+      }
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <title>BMI berekening</title>
+  </head>
+  <body>
+
+    <form>
+      Geef je gewicht in (kg): <input type="number" id="gewicht"></br>
+      Geef je lengte in (cm):  <input type="number" id="lengte"></br>
+
+      <button type="button" onclick="calcBMI()">Bereken je BMI</button>
+    </form>
+
+    <p id="jouwBMI"></p>
+
+    <script>
+      function calcBMI() {
+          const weight = document.getElementById("gewicht").value;
+          const length = document.getElementById("lengte").value / 100;
+          const bmi = weight / (length * length)
+
+          var diagnose;
+          if (bmi >= 30) {
+              diagnose = "overgewicht";
+          }
+          else if(bmi < 20) {
+              diagnose = "ondergwicht";
+          }
+          else {
+              diagnose = "standaard";
+          }
+          document.getElementById("jouwBMI").innerHTML = Math.round(bmi * 100) / 100 + " -> " + diagnose;
+      }
+    </script>
+  </body>
+</html>
