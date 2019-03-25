@@ -18,10 +18,11 @@ Stap 2: omzetting zwakke entiteittypes
 NVT
 
 Stap 3: omzetting sub/supertypes
-(4.1) Ensemble(naam, beschrijving, artikelnr_ensemble, prijs)
-      PK: {artikelnr_ensemble, naam}
-(5.1) Meubel(aard, fabrikant, houtsoort, artikelnr_meubel, prijs)
-      PK: {artikelnr_meubel}
+// zet artikel (3.0) om in Ensemble en Meubel
+(4.1) Ensemble(naam, beschrijving, artikelnr, prijs)
+      PK: {artikelnr} // naam hoeft geen primary key meer te zijn als we artikelnr hebben
+(5.1) Meubel(aard, fabrikant, houtsoort, artikelnr, prijs)
+      PK: {artikelnr}
 
 Stap 4: omzetting categorieën
 NVT
@@ -35,15 +36,15 @@ Stap 6: omzetting 1:N relatietypes
       FK: {klantnr}
 
 Stap 7: omzetting N:M relatietypes
-(6.0) Bestellen(aantal, bestelnr, artikelnr_ensemble, artikelnr_meubel)
-      PK: {bestelnr, artikelnr_ensemble, artikelnr_meubel}
+(6.0) Bestellen(aantal, bestelnr, e_id, m_id)
+      PK: {bestelnr, e_id, m_id}
       FK: {bestelnr} verwijst naar Bestelling
-      FK: {artikelnr_ensemble} verwijst naar Ensemble
-      FK: {artikelnr_meubel} verwijst naar Meubel
-(7.0) VormEnsemble(aantal, naam, artikelnr_ensemble, artikelnr_meubel)
-      PK: {naam, artikelnr_ensemble, artikelnr_meubel}
-      FK: {naam, artikelnr_ensemble} verwijst naar Ensemble
-      FK: {artikelnr_meubel} verwijst naar Meubel
+      FK: {e_id} verwijst naar artikelnr Ensemble
+      FK: {m_id} verwijst naar artikelnr Meubel
+(7.0) VormEnsemble(aantal, e_id, m_id)
+      PK: {e_id, m_id}
+      FK: {e_id} verwijst naar artikelnr Ensemble
+      FK: {m_id} verwijst naar artikelnr Meubel
 
 Stap 8: omzetting meerwaardige attributen
 NVT
@@ -61,19 +62,19 @@ Bestelling(datum:date, bestelnr:int, klantnr:int)
       PK: {bestelnr}
       FK: {klantnr}
 
-Ensemble(naam:varchar, beschrijving:varchar, artikelnr_ensemble:int, prijs:real)
-      PK: {artikelnr_ensemble, naam}
+Ensemble(naam:varchar, beschrijving:varchar, artikelnr:int, prijs:real)
+      PK: {artikelnr}
 
-Meubel(aard:varchar, fabrikant:varchar, houtsoort:varchar, artikelnr_meubel:int, prijs:real)
-      PK: {artikelnr_meubel}
+Meubel(aard:varchar, fabrikant:varchar, houtsoort:varchar, artikelnr:int, prijs:real)
+      PK: {artikelnr}
 
-Bestellen(aantal:int, bestelnr:int, artikelnr_ensemble:int, artikelnr_meubel:int)
-      PK: {bestelnr, artikelnr_ensemble, artikelnr_meubel}
+Bestellen(aantal:int, bestelnr:int, e_id:int, m_id:int)
+      PK: {bestelnr, e_id, m_id}
       FK: {bestelnr} verwijst naar Bestelling
-      FK: {artikelnr_ensemble} verwijst naar Ensemble
-      FK: {artikelnr_meubel} verwijst naar Meubel
+      FK: {e_id} verwijst naar artikelnr Ensemble
+      FK: {m_id} verwijst naar artikelnr Meubel
       
-VormEnsemble(aantal:int, naam:varchar, artikelnr_ensemble:int, artikelnr_meubel:int)
-      PK: {naam, artikelnr_ensemble, artikelnr_meubel}
-      FK: {naam, artikelnr_ensemble} verwijst naar Ensemble
-      FK: {artikelnr_meubel} verwijst naar Meubel
+VormEnsemble(aantal:int, e_id:int, m_id:int)
+      PK: {e_id, m_id}
+      FK: {e_id} verwijst naar artikelnr Ensemble
+      FK: {m_id} verwijst naar artikelnr Meubel
