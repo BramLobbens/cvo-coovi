@@ -33,7 +33,7 @@ NVT
 Stap 6: omzetting 1:N relatietypes
 (2.1) Bestelling(datum, bestelnr, klantnr)
       PK: {bestelnr}
-      FK: {klantnr}
+      FK: {klantnr} verwijst naar Klant
 
 Stap 7: omzetting N:M relatietypes
 (6.0) Bestellen(aantal, bestelnr, e_id, m_id)
@@ -60,7 +60,7 @@ Klant(klantnr:int, adres:varchar, naam:varchar)
 
 Bestelling(datum:date, bestelnr:int, klantnr:int)
       PK: {bestelnr}
-      FK: {klantnr}
+      FK: {klantnr} verwijst naar Klant
 
 Ensemble(naam:varchar, beschrijving:varchar, artikelnr:int, prijs:real)
       PK: {artikelnr}
