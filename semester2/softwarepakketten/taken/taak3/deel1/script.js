@@ -16,9 +16,9 @@ $(document).ready(() => {
         if (!expanded) {
             let vals = readVals();
             if (vals) {
-                expandCircle(vals.width, vals.height);
+                animateCircle(vals.width, vals.height);
                 expanded = true;
-                $("#btn").html("Reset Animation");
+                $("#btn").html("Reset Circle");
             }
             else {
                 alert("Input values");
@@ -26,9 +26,9 @@ $(document).ready(() => {
         }
         
         else {
-            contractCircle();
+            animateCircle(width, height);
             expanded = false;
-            $("#btn").html("Start Animation");
+            $("#btn").html("Apply Changes");
         }
         
     });
@@ -48,11 +48,8 @@ $(document).ready(() => {
                };
     };
     
-    const expandCircle = (newWidth, newHeight) => {
-        $("#circle").animate({"width": newWidth, "height": newHeight})
-    };
-    const contractCircle = () => {
-        $("#circle").animate({"width": width, "height": height})
+    const animateCircle = (width, height) => {
+        $("#circle").animate({"width": width, "height": height});
     };
 
 });
