@@ -1,0 +1,43 @@
+body, p {
+    font-family: "Arial", "sans-serif";
+    font-size: 14px;
+}
+
+#circle-container {
+    z-index: -1;
+}
+
+#circle {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid  #000000;
+
+    position: relative;
+}
+
+#input-container {
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 280px;
+    border: solid 1px #000000;
+    background: lightblue;
+}
+
+#input-container input {
+    float: right;
+ }
+
+#input-container p {
+    text-align: left;
+    line-height: 2.5em;
+    font-weight: bold;
+}
+
+#btn {
+    margin-top: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
