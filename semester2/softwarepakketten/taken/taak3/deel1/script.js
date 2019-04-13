@@ -4,13 +4,13 @@ $(document).ready(() => {
     $("#new-width").val("");
     $("#new-height").val("");
     
-    // Circle start values
+    // Get circle start values
     const width = $("#circle").css("width");
     const height = $("#circle").css("height");
     
     let expanded = false;
 
-    // If circle not yet expanded, expandCircle, else contractCircle
+    // Expand circle with user input values, otherwise with start values 
     $("#btn").on("click", () => {
 
         if (!expanded) {
