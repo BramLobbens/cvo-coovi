@@ -8,18 +8,17 @@ Opdracht 5 SQL SELECT UPDATE
 Vraag 1
 Hoeveel verschillende eigenaars zijn er voor schilderijen van James Ensor?
 */
--- methode 1
-SELECT count(*) AS Aantal,
-       e.Eigenaar
-FROM Schilderij s, Artiest a, Eigenaar e
-WHERE 
-    s.Artiest = a.A_ID
-    AND s.Eigenaar = e.Eigenaar
-    AND a.Voornaam = 'James'
-    AND a.Naam = 'Ensor'
-GROUP BY  e.Eigenaar;
 
--- methode 2
+SELECT count(distinct Schilderij.Eigenaar)
+FROM Schilderij
+INNER JOIN Eigenaar
+    ON Schilderij.Eigenaar = Eigenaar.Eigenaar
+INNER JOIN Artiest
+    ON Schilderij.Artiest = Artiest.A_ID
+WHERE 
+    (SELECT Artiest.Voornaam || ' ' || Artiest.Naam) = 'James Ensor' ;
+
+-- Ter controle toon eigenaars met aantal James Ensor schilderijen
 SELECT count(*) AS Aantal,
        e.Eigenaar
 FROM Schilderij s
