@@ -9,27 +9,29 @@ Vraag 1
 Hoeveel verschillende eigenaars zijn er voor schilderijen van James Ensor?
 */
 
-SELECT count(distinct Schilderij.Eigenaar)
-FROM Schilderij
-INNER JOIN Eigenaar
-    ON Schilderij.Eigenaar = Eigenaar.Eigenaar
-INNER JOIN Artiest
-    ON Schilderij.Artiest = Artiest.A_ID
-WHERE 
-    (SELECT Artiest.Voornaam || ' ' || Artiest.Naam) = 'James Ensor' ;
-
+select count(distinct s.Eigenaar) as UniqueEigenaar
+  from Schilderij as s
+  join Eigenaar as e
+    on s.Eigenaar = e.Eigenaar
+  join Artiest as a
+    on s.Artiest = a.A_ID
+ where (
+           select a.Voornaam || ' ' || a.Naam
+       ) = 'James Ensor'
+;
 -- Ter controle toon eigenaars met aantal James Ensor schilderijen
-SELECT count(*) AS Aantal,
-       e.Eigenaar
-FROM Schilderij s
-INNER JOIN Eigenaar e
-    ON s.Eigenaar = e.Eigenaar
-INNER JOIN Artiest a
-    ON s.Artiest = a.A_ID
-WHERE 
-    (SELECT a.Voornaam || ' ' || a.Naam AS artiest) = 'James Ensor'
-GROUP BY  e.Eigenaar;
-
+select count(*) as Aantal
+     , e.Eigenaar
+  from Schilderij as s
+  join Eigenaar as e
+    on s.Eigenaar = e.Eigenaar
+  join Artiest a
+    on s.Artiest = a.A_ID
+ where (
+           select a.Voornaam || ' ' || a.Naam
+       ) = 'James Ensor'
+ group by e.Eigenaar
+;
 
 /* Database werkverdeling */
 
@@ -38,112 +40,106 @@ Vraag 1
 Geef alle programmeurs en DBA’s uit Gent en Brussel (naam, salaris, vestgingsnaam) met een salaris tussen de 2000 en 4000EUR
 */
 
--- methode 1
-SELECT w.wnaam AS Naam,
-       w.salaris AS Salaris,
-       v.vnaam AS Vestiging
-FROM Werknemer w, Vestiging v, Functie f
-WHERE 
-    w.fnaam = f.fnaam
-    AND w.vnaam = v.vnaam
-    AND (f.fnaam = 'PROGRAMMEUR' OR f.fnaam = 'DBA')
-    AND (v.plaats = 'GENT' OR v.plaats = 'BRUSSEL')
-    AND w.salaris BETWEEN 2000 AND 4000;
-        
--- methode 2
-SELECT Werknemer.wnaam,
-       Werknemer.salaris,
-       Vestiging.vnaam
-FROM Werknemer
-INNER JOIN Functie
-    ON Werknemer.fnaam = Functie.fnaam
-INNER JOIN Vestiging
-    ON Werknemer.vnaam = Vestiging.vnaam
-WHERE 
-    (Functie.fnaam = 'PROGRAMMEUR' OR Functie.fnaam = 'DBA')
-    AND (Vestiging.plaats = 'GENT' OR Vestiging.plaats = 'BRUSSEL')
-    AND Werknemer.salaris BETWEEN 2000 AND 4000;
+select w.wnaam as Naam
+     , w.salaris as Salaris
+     , v.vnaam as Plaats
+  from Werknemer as w
+  join Functie as f
+    on w.fnaam = f.fnaam
+  join Vestiging as v
+    on w.vnaam = v.vnaam
+ where f.fnaam in ('PROGRAMMEUR', 'DBA')
+   and v.plaats in ('GENT', 'BRUSSEL')
+   and w.salaris between 2000 and 4000
+;
 
 /*
 Vraag 2
 Geef naam, salaris,functienaam en het nummer van zijn vervanger voor alle analisten, technici,DBA’s en programmeurs
 */
 
-SELECT w.wnaam AS Naam,
-       w.salaris AS Salaris,
-       w.fnaam AS Functie,
-       v.vervanger AS 'Nummer Vervanger'
-FROM Werknemer w 
-LEFT OUTER JOIN Vervanging v
-    ON w.wnr = v.wnr
-INNER JOIN Functie f
-    ON w.fnaam = f.fnaam
-WHERE f.fnaam IN('ANALIST', 'TECHNICUS', 'DBA', 'PROGRAMMEUR');
+select w.wnaam as Naam
+     , w.salaris as Salaris
+     , w.fnaam as Functie
+     , v.vervanger as NummerVervanger
+  from Werknemer as w
+  join Functie as f
+    on w.fnaam = f.fnaam
+  left join Vervanging v
+    on w.wnr = v.wnr
+ where f.fnaam in ('ANALIST', 'TECHNICUS', 'DBA', 'PROGRAMMEUR')
+;
 
 /*
 Vraag 3
 De directeur wil een overzicht van de som van de totale maandelijkse loonkost en dit per vestiging.
 */
 
-SELECT sum(Werknemer.salaris) AS Totaal,
-       Vestiging.plaats AS Vestiging
-FROM Werknemer
-INNER JOIN Vestiging
-    ON Werknemer.vnaam = Vestiging.vnaam
-GROUP BY Vestiging.plaats;
+select sum(w.salaris) as Totaal
+     , v.plaats as Vestiging
+  from Werknemer as w
+  join Vestiging as v
+    on w.vnaam = v.vnaam
+ group by v.plaats
+;
 
 /*
 Vraag 4
 Geef alle werknemers van de vestigingen in Antwerpen 3% opslag, voor zover hun salaris niet meer dan 3500 EUR bedraagt.
 */
 
-UPDATE Werknemer 
-SET salaris = salaris * 1.03
-WHERE 
-    (SELECT salaris
-    FROM Werknemer
-    INNER JOIN Vestiging
-        ON Werknemer.vnaam = Vestiging.vnaam
-    WHERE Vestiging.plaats = 'ANTWERPEN'
-        AND Werknemer.salaris <= 3500);
+update Werknemer
+   set salaris = salaris + 1.03
+ where (
+           select salaris
+             from Werknemer as w
+             join Vestiging as v
+               on w.vnaam = v.vnaam
+            where v.plaats = 'ANTWERPEN'
+              and w.salaris <= 3500 
+       )
+;
 
 /*
 Vraag 5
 Geef de vestiging met de hoogste bezetting aan werknemers.
 */
 
-SELECT count(Werknemer.wnr) AS Totaal,
-       Vestiging.plaats AS Vestiging
-FROM Werknemer
-INNER JOIN Vestiging
-    ON Werknemer.vnaam = Vestiging.vnaam
-GROUP BY Vestiging.plaats
-ORDER BY count(Werknemer.wnr) DESC 
-LIMIT 1;
+select count(w.wnr) as Totaal
+     , v.plaats as Vestiging
+  from Werknemer as w
+  join Vestiging as v
+    on w.vnaam = v.vnaam
+ group by Vestiging
+ order by Totaal desc
+ limit 1
+;
 
 /*
 Vraag 6
 Geef de branche waar de werknemers gemiddeld het meest verdienen.
 */
 
-SELECT AVG(Werknemer.salaris) AS 'Gemiddeld Salaris', 
-       Vestiging.branche AS Branche
-FROM Werknemer
-INNER JOIN Vestiging
-    ON Werknemer.vnaam = Vestiging.vnaam
-GROUP BY Vestiging.branche
-ORDER BY AVG(Werknemer.salaris) DESC 
-LIMIT 1;
+select avg(w.salaris) as GemiddeldSalaris
+     , v.branche as Branche
+  from Werknemer as w
+  join Vestiging as v
+    on w.vnaam = v.vnaam
+ group by Branche
+ order by GemiddeldSalaris desc
+ limit 1
+;
 
 /*
 Vraag 7
 Geef per vestiging de werknemer die het minst verdient. Geef de kolom met de laagste salaris de naam ‘Laagste’.
 */
 
-SELECT min(Werknemer.salaris) AS Laagste,
-       Vestiging.plaats
-FROM Werknemer
-INNER JOIN Vestiging
-    ON Werknemer.vnaam = Vestiging.vnaam
-GROUP BY Vestiging.plaats
-ORDER BY min(Werknemer.salaris) ASC;
+select min(w.salaris) as Laagste
+     , v.plaats as Plaats
+  from Werknemer as w
+  join Vestiging as v
+    on w.vnaam = v.vnaam
+ group by Plaats
+ order by Laagste
+;
