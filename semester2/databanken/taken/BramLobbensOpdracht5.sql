@@ -89,7 +89,7 @@ Geef alle werknemers van de vestigingen in Antwerpen 3% opslag, voor zover hun s
 */
 
 update Werknemer
-   set salaris = salaris + 1.03
+   set salaris = salaris * 1.03
  where (
            select salaris
              from Werknemer as w
