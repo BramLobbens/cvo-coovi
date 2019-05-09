@@ -90,8 +90,8 @@ Geef alle werknemers van de vestigingen in Antwerpen 3% opslag, voor zover hun s
 
 update Werknemer
    set salaris = salaris * 1.03
- where (
-           select salaris
+ where wnr in (
+           select w.wnr
              from Werknemer as w
              join Vestiging as v
                on w.vnaam = v.vnaam
